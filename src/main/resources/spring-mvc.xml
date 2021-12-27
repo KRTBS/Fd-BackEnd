@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/mvc
+       https://www.springframework.org/schema/mvc/spring-mvc.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <!--启用mvc默认配置-->
+    <mvc:annotation-driven>
+        <mvc:message-converters register-defaults="true">
+            <bean id="stringHttpMessageConverter" class="org.springframework.http.converter.StringHttpMessageConverter">
+                <property name="supportedMediaTypes" value="text/html;charset=UTF-8"/>
+                <!--<property name="supportedMediaTypes" value="application/json;charset=UTF-8"/>-->
+                <!--<property name="defaultCharset" value="text/html;charset=UTF-8"/>-->
+            </bean>
+        </mvc:message-converters>
+    </mvc:annotation-driven>
+
+    <!--静态资源默认servlet配置-->
+    <mvc:default-servlet-handler/>
+
+    <!--配置组件扫描-->
+    <context:component-scan base-package="com.controller"/>
+
+    <!--配置视图解析器-->
+    <bean id="internalResourceViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/JSP/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+    <!--thymeleaf模板解析器-->
+    <!--<bean id="templateResolver" class="org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver">-->
+    <!--    <property name="prefix" value="/WEB-INF/JSP/"/>-->
+    <!--    <property name="suffix" value=".jsp"/>-->
+    <!--    <property name="templateMode" value="HTML"/>-->
+    <!--    <property name="cacheable" value="false"/>-->
+    <!--    <property name="characterEncoding" value="UTF-8"/>-->
+    <!--</bean>-->
+
+    <!--配置模板引擎-->
+    <!--<bean id="templateEngine" class="org.thymeleaf.spring5.SpringTemplateEngine">-->
+    <!--    <property name="templateResolver" ref="templateResolver"/>-->
+    <!--</bean>-->
+    <!--<bean class="org.thymeleaf.spring5.view.ThymeleafViewResolver">-->
+    <!--    <property name="templateEngine" ref="templateEngine"/>-->
+    <!--    <property name="characterEncoding" value="UTF-8"/>-->
+    <!--</bean>-->
+
+    <!--<bean id="commonsMultipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">-->
+    <!--    <property name="maxUploadSizePerFile" value="52428800"/>-->
+    <!--    <property name="defaultEncoding" value="UTF-8"/>-->
+    <!--    <property name="resolveLazily" value="true"/>-->
+    <!--</bean>-->
+
+    <!--模板解析2-->
+    <!-- 配置模板视图解析器 -->
+    <!--<bean id="templateResolver"-->
+    <!--      class="org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver">-->
+    <!--    &lt;!&ndash; html文件所在的目录 &ndash;&gt;-->
+    <!--    <property name="prefix" value="/WEB-INF/JSP/" />-->
+    <!--    &lt;!&ndash; 文件的后缀名 &ndash;&gt;-->
+    <!--    <property name="suffix" value=".html" />-->
+
+    <!--    <property name="order" value="1"/>-->
+    <!--    <property name="templateMode" value="LEGACYHTML5" />-->
+    <!--    <property name="cacheable" value="false" />-->
+    <!--    <property name="characterEncoding" value="UTF-8"/>-->
+    <!--</bean>-->
+
+    <!--整合shiroDIalect：用来整合shiro thyme leaf-->
+    <!--<bean id="dialect" class="at.pollux.thymeleaf.shiro.dialect.ShiroDialect"/>-->
+
+    <!--<bean id="templateEngine" class="org.thymeleaf.spring5.SpringTemplateEngine">-->
+    <!--    <property name="templateResolver" ref="templateResolver" />-->
+    <!--    <property name="additionalDialects" ref="dialect"/>-->
+    <!--</bean>-->
+
+    <!--<bean id="viewResolver" class="org.thymeleaf.spring5.view.ThymeleafViewResolver">-->
+    <!--    <property name="templateEngine" ref="templateEngine" />-->
+    <!--    <property name="characterEncoding"  value="UTF-8" />-->
+    <!--</bean>-->
+    <!--静态资源映射-->
+    <!--<mvc:resources mapping="/BootStrap/**" location="/Resource/BootStrap/"></mvc:resources>-->
+    <!--<mvc:resources mapping="/Layui/**" location="/Resource/Layui/"></mvc:resources>-->
+
+
+
+    <!--shiro 授权 start  解决不走shiro授权方法及shiro注解问题-->
+    <!-- 开启aop，对类代理 -->
+    <aop:config proxy-target-class="true"></aop:config>
+    <!-- 开启shiro注解支持 -->
+    <import resource="spring-shiro.xml"/>
+    <bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
+        <property name="securityManager" ref="securityManager" />
+    </bean>
+
+
+     <!--上传文件-->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="defaultEncoding" value="utf-8"/>
+        <!-- 最大内存大小 -->
+        <property name="maxInMemorySize" value="10240"/>
+        <!-- 最大文件大小，-1为不限制大小 -->
+        <property name="maxUploadSize" value="1048576"/>
+    </bean>
+
+</beans>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util https://www.springframework.org/schema/util/spring-util.xsd">
+
+    <!--org.apache.shiro.spring.web.ShiroFilterFactoryBean-->
+    <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+        <property name="securityManager" ref="securityManager" />
+
+        <property name="unauthorizedUrl" value="/401"/>
+        <property name="filters">
+            <map>
+                <entry key="jwtFilter" value-ref="jwtFilter"></entry>
+            </map>
+        </property>
+
+        <property name="filterChainDefinitions">
+            <value>
+                / = anon
+                /dest = jwtFilter[Admin]
+                /xxxx = jwtFilter[User]
+            </value>
+        </property>
+    </bean>
+    <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+        <property name="realm" ref="jwtRealm"/>
+
+        <property name="subjectDAO" ref="defaultSubjectDAO"/>
+
+    </bean>
+    <bean id="jwtRealm" class="com.config.JwtRealm"></bean>
+    <bean id="jwtFilter" class="com.config.JwtFilter"></bean>
+
+    <bean id="defaultSubjectDAO" class="org.apache.shiro.mgt.DefaultSubjectDAO">
+        <property name="sessionStorageEvaluator" ref="defaultSessionStorageEvaluator"/>
+    </bean>
+
+    <bean id="defaultSessionStorageEvaluator" class="org.apache.shiro.mgt.DefaultSessionStorageEvaluator">
+        <property name="sessionStorageEnabled" value="false"/>
+    </bean>
+
+</beans>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.UserMapper">
+
+    <select id="queryAllUser" resultType="User">
+        select * from fooddelivered.user_list;
+    </select>
+
+    <select id="queryUserByName" parameterType="string" resultType="User">
+        select * from fooddelivered.user_list where UserName = #{name};
+    </select>
+
+    <select id="quertUserRoleByName" parameterType="string" resultType="User">
+        select * from fooddelivered.user_list where UserRole = #{name};
+    </select>
+
+</mapper>

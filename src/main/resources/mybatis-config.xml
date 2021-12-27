@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <!--全局配置-->
+    <settings>
+        <setting name="logImpl" value="STDOUT_LOGGING"/>
+    </settings>
+
+    <typeAliases>
+        <typeAlias type="com.pojo.Shop" alias="Shop"/>
+        <typeAlias type="com.pojo.Users" alias="User"/>
+        <typeAlias type="com.pojo.ImgFile" alias="ImgFile"/>
+        <typeAlias type="com.pojo.Location" alias="Location"/>
+        <!--<typeAlias type="com.pojo.Users" alias="Users"/>-->
+        <!--<typeAlias type="com.pojo.Article" alias="Article"/>-->
+        <!--<typeAlias type="com.pojo.Review" alias="Review"/>-->
+        <package name="com.pojo"/>
+    </typeAliases>
+
+    <mappers>
+        <!--<mapper class="com.dao.UsersMapper"/>-->
+        <!--<mapper class="com.dao.ArticleMapper"/>-->
+    </mappers>
+
+    <!--pageHelper尚未配置-->
+
+</configuration>

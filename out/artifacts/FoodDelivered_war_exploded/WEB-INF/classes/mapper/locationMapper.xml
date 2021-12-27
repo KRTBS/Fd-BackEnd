@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.LocationMapper">
+
+    <select id="queryAllLocation" resultType="Location">
+        select * from fooddelivered.location_list;
+    </select>
+
+    <select id="queryLoactionByID" parameterType="int" resultType="Location">
+        select * from fooddelivered.location_list where LocationID = #{LoactionID};
+    </select>
+
+    <insert id="addNewLoaction" parameterType="Location">
+        insert into fooddelivered.location_list (LocaitonName) value (#{LoactionName});
+    </insert>
+
+    <delete id="deleteLocationByID" parameterType="int">
+        delete from fooddelivered.location_list where LocationID = #{LocationID};
+    </delete>
+    
+    <update id="updataLocation" parameterType="Location">
+        update fooddelivered.location_list set LocaitonName = #{LoactionName} where LocationID = #{LocationID};
+    </update>
+
+</mapper>
