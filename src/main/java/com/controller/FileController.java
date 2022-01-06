@@ -40,7 +40,7 @@ public class FileController {
         return "ok";
     }
 
-    @RequestMapping("/api/img/{imgName}")
+    @RequestMapping("/api/v1/img/{imgName}")
     public String getImg(@PathVariable String imgName){
         return imgName;
     }

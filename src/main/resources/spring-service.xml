@@ -19,8 +19,16 @@
         <property name="fileMapper" ref="fileMapper"/>
     </bean>
 
-    <bean id="locationServiceImpl" class="com.service.LocationServiceImpl">
-        <property name="locationMapper" ref="locationMapper"/>
+    <bean id="carouselServiceImpl" class="com.service.CarouselServiceImpl">
+        <property name="carouselMapper" ref="carouselMapper"/>
+    </bean>
+
+    <bean id="bfIntroServiceImpl" class="com.service.BfIntroServiceImpl">
+        <property name="bfIntroMapper" ref="bfIntroMapper"/>
+    </bean>
+
+    <bean id="infoServiceImpl" class="com.service.InfoServiceImpl">
+        <property name="infoMapper" ref="infoMapper"/>
     </bean>
 
     <!--声明式事务配置-->

@@ -12,5 +12,4 @@ public interface ShopMapper {
 
     List<Shop> queryShopByLocation(int ShopLocation);
 
-
 }
