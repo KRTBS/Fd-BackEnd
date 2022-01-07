@@ -3,15 +3,14 @@ package com.controller;
 import com.pojo.BfIntro;
 import com.pojo.Carousel;
 import com.pojo.Info;
+import com.pojo.ResponseBean;
 import com.service.BfIntroService;
 import com.service.CarouselService;
 import com.service.InfoService;
 import com.util.MyUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Collections;
 import java.util.List;
@@ -19,6 +18,7 @@ import java.util.List;
 @Controller
 @ResponseBody
 @RequestMapping("/api/open")
+@CrossOrigin
 public class IndexController {
 
     @Autowired
@@ -42,11 +42,23 @@ public class IndexController {
         return MyUtils.mapper.writeValueAsString(bfIntros);
     }
 
+    @GetMapping("/information/all")
+    public String getAllInfo() throws Exception {
+        List<Info> info = infoService.queryAllInfo();
+        Collections.reverse(info);
+        return MyUtils.mapper.writeValueAsString(new ResponseBean(info).OK());
+    }
+
     @GetMapping("/information/index")
     public String getIndexInfoList() throws Exception{
         List<Info> info = infoService.queryAllInfo();
         Collections.reverse(info);
-        return MyUtils.mapper.writeValueAsString(info.subList(0,4));
+        return MyUtils.mapper.writeValueAsString(new ResponseBean(info.subList(0,4)).OK());
+    }
+
+    @GetMapping("/information/{id}")
+    public String getInfoByID(@PathVariable int id) throws Exception{
+        return MyUtils.mapper.writeValueAsString(new ResponseBean(infoService.queryInfoByID(id)).OK());
     }
 
 }

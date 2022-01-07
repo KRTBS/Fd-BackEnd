@@ -1,5 +1,7 @@
 package com.pojo;
 
+import org.springframework.http.HttpStatus;
+
 public class ResponseBean {
 
     //status code
@@ -11,13 +13,17 @@ public class ResponseBean {
     //information
     private Object data;
 
+    public ResponseBean() {
+    }
+
+    public ResponseBean(Object data) {
+        this.data = data;
+    }
+
     public ResponseBean(int code, String msg, Object data) {
         this.code = code;
         this.msg = msg;
         this.data = data;
-    }
-
-    public ResponseBean() {
     }
 
     public int getCode() {
@@ -42,5 +48,23 @@ public class ResponseBean {
 
     public void setData(Object data) {
         this.data = data;
+    }
+
+    public ResponseBean OK(){
+        this.code = HttpStatus.OK.value();
+        this.msg = HttpStatus.OK.getReasonPhrase();
+        return this;
+    }
+
+    public ResponseBean CREATED(){
+        this.code = HttpStatus.CREATED.value();
+        this.msg = HttpStatus.CREATED.getReasonPhrase();
+        return this;
+    }
+
+    public ResponseBean NOT_FOUND(){
+        this.code = HttpStatus.NOT_FOUND.value();
+        this.msg = HttpStatus.NOT_FOUND.getReasonPhrase();
+        return this;
     }
 }

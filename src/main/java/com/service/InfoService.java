@@ -8,4 +8,6 @@ public interface InfoService {
 
     List<Info> queryAllInfo();
 
+    Info queryInfoByID(int id);
+
 }

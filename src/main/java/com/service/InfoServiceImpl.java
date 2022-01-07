@@ -19,4 +19,9 @@ public class InfoServiceImpl implements InfoService{
     public List<Info> queryAllInfo() {
         return infoMapper.queryAllInfo();
     }
+
+    @Override
+    public Info queryInfoByID(int id) {
+        return infoMapper.queryInfoByID(id);
+    }
 }

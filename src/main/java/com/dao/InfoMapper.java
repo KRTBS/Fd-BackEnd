@@ -8,4 +8,6 @@ public interface InfoMapper {
 
     List<Info> queryAllInfo();
 
+    Info queryInfoByID(int id);
+
 }
