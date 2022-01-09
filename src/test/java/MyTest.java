@@ -1,10 +1,11 @@
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.pojo.Product;
 import com.pojo.ResponseBean;
-import com.pojo.Shop;
-import com.service.ShopService;
+import com.service.ProductService;
 import com.util.JwtUtils;
 import com.util.MyUtils;
 import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -12,6 +13,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class MyTest {
+
+    @Autowired
+    private ProductService productService;
 
     @Test
     public void test() throws Exception{
@@ -25,7 +29,12 @@ public class MyTest {
         //System.out.println(JwtUtils.isExprire(s));
 
 
-        System.out.println(new ResponseBean("sss").CREATED());
+
+        //System.out.println(new ResponseBean("sss").CREATED());
+
+
+
+        //System.out.println(MyUtils.mapper.writeValueAsString(new ResponseBean(productService.queryProductList()).OK()));
 
     }
 

@@ -7,10 +7,6 @@
     <!--扫描service下的包-->
     <context:component-scan base-package="com.service"/>
 
-    <bean id="shopServiceImpl" class="com.service.ShopServiceImpl">
-        <property name="shopMapper" ref="shopMapper"/>
-    </bean>
-
     <bean id="userServiceImpl" class="com.service.UserServiceImpl">
         <property name="userMapper" ref="userMapper"/>
     </bean>
@@ -30,6 +26,13 @@
     <bean id="infoServiceImpl" class="com.service.InfoServiceImpl">
         <property name="infoMapper" ref="infoMapper"/>
     </bean>
+
+    <bean id="productServiceImpl" class="com.service.ProductServiceImpl">
+        <property name="productMapper" ref="productMapper"/>
+        <property name="productImgMapper" ref="productImgMapper"/>
+        <property name="productSelectionMapper" ref="productSelectionMapper"/>
+    </bean>
+
 
     <!--声明式事务配置-->
     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">

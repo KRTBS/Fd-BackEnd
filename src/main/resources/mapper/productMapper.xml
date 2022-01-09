@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.ProductMapper">
+
+    <select id="queryProductList" resultType="Product">
+        select id, name, imgsrc, price from fooddelivered.product;
+    </select>
+
+    <select id="queryProductByID" resultType="Product" parameterType="int">
+        select * from fooddelivered.product where id = #{id};
+    </select>
+
+</mapper>

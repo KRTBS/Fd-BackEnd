@@ -1,16 +1,14 @@
 package com.pojo;
 
-public class Carousel {
+public class ProductImg {
     private int id;
-    private String title;
     private String imgsrc;
     private int itemid;
 
-    public Carousel() {
+    public ProductImg() {
     }
 
-    public Carousel(String title, String imgsrc, int itemid) {
-        this.title = title;
+    public ProductImg(String imgsrc, int itemid) {
         this.imgsrc = imgsrc;
         this.itemid = itemid;
     }
@@ -22,14 +20,6 @@ public class Carousel {
     //public void setId(int id) {
     //    this.id = id;
     //}
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
 
     public String getImgsrc() {
         return imgsrc;

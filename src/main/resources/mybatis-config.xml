@@ -10,15 +10,14 @@
     </settings>
 
     <typeAliases>
-        <typeAlias type="com.pojo.Shop" alias="Shop"/>
         <typeAlias type="com.pojo.Users" alias="User"/>
         <typeAlias type="com.pojo.ImgFile" alias="ImgFile"/>
         <typeAlias type="com.pojo.Carousel" alias="Carousel"/>
         <typeAlias type="com.pojo.BfIntro" alias="BfIntro"/>
         <typeAlias type="com.pojo.Info" alias="Info"/>
-        <!--<typeAlias type="com.pojo.Users" alias="Users"/>-->
-        <!--<typeAlias type="com.pojo.Article" alias="Article"/>-->
-        <!--<typeAlias type="com.pojo.Review" alias="Review"/>-->
+        <typeAlias type="com.pojo.Product" alias="Product"/>
+        <typeAlias type="com.pojo.ProductImg" alias="ProductImg"/>
+        <typeAlias type="com.pojo.ProductSelection" alias="ProductSelection"/>
         <package name="com.pojo"/>
     </typeAliases>
 

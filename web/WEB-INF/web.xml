@@ -8,6 +8,10 @@
         <param-name>contextConfigLocation</param-name>
         <param-value>classpath:applicationContext.xml</param-value>
     </context-param>
+    
+    <!--<listener>-->
+    <!--    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>-->
+    <!--</listener>-->
 
     <!--DispatchServlet-->
     <!--前端控制器-->
