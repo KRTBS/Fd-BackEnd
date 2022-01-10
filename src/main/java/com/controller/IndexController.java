@@ -4,10 +4,7 @@ import com.pojo.BfIntro;
 import com.pojo.Carousel;
 import com.pojo.Info;
 import com.pojo.ResponseBean;
-import com.service.BfIntroService;
-import com.service.CarouselService;
-import com.service.InfoService;
-import com.service.ProductService;
+import com.service.*;
 import com.util.MyUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -33,6 +30,9 @@ public class IndexController {
 
     @Autowired
     private ProductService productService;
+
+    @Autowired
+    private StoreInfoService storeInfoService;
 
     @GetMapping("/carousel")
     public String getCarouselList() throws Exception{
@@ -97,6 +97,15 @@ public class IndexController {
         return MyUtils.mapper.writeValueAsString(
                 new ResponseBean(
                         productService.queryProductSelectionByID(id)
+                ).OK()
+        );
+    }
+
+    @GetMapping("/information/store")
+    public String getStoreInformation() throws Exception{
+        return MyUtils.mapper.writeValueAsString(
+                new ResponseBean(
+                        storeInfoService.queryStoreInfo()
                 ).OK()
         );
     }

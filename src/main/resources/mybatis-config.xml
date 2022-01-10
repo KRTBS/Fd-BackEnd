@@ -18,6 +18,7 @@
         <typeAlias type="com.pojo.Product" alias="Product"/>
         <typeAlias type="com.pojo.ProductImg" alias="ProductImg"/>
         <typeAlias type="com.pojo.ProductSelection" alias="ProductSelection"/>
+        <typeAlias type="com.pojo.StoreInfo" alias="StoreInfo"/>
         <package name="com.pojo"/>
     </typeAliases>
 

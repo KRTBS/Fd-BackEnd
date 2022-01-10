@@ -33,6 +33,10 @@
         <property name="productSelectionMapper" ref="productSelectionMapper"/>
     </bean>
 
+    <bean id="storeInfoServiceImpl" class="com.service.StoreInfoServiceImpl">
+        <property name="storeInfoMapper" ref="storeInfoMapper"/>
+    </bean>
+
 
     <!--声明式事务配置-->
     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
