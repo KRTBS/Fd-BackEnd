@@ -44,9 +44,7 @@ public class JwtRealm extends AuthorizingRealm {
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken) throws AuthenticationException {
         String token = (String) authenticationToken.getCredentials();
         String username = JwtUtils.getUsername(token);
-        System.out.println(token);
         if (username == null){
-            System.out.println(username);
             throw new AuthenticationException("TOKEN INVALID");
         }
         Users users = userService.queryUserByName(username);

@@ -23,6 +23,7 @@ public class JwtFilter extends BasicHttpAuthenticationFilter {
     @Override
     protected boolean isLoginAttempt(ServletRequest request, ServletResponse response) {
         String token = this.getAuthzHeader(request);
+        String pathWithinApplication = this.getPathWithinApplication(request);
         return token != null;
     }
 
@@ -35,6 +36,11 @@ public class JwtFilter extends BasicHttpAuthenticationFilter {
 
     @Override
     protected boolean isAccessAllowed(ServletRequest request, ServletResponse response, Object mappedValue) {
+        if (request instanceof HttpServletRequest) {
+            if (((HttpServletRequest) request).getMethod().toUpperCase().equals("OPTIONS")) {
+                return true;
+            }
+        }
         if (isLoginAttempt(request,response)){
             try {
                 executeLogin(request,response);

@@ -1,15 +1,13 @@
 package com.controller;
 
-import com.pojo.BfIntro;
-import com.pojo.Carousel;
-import com.pojo.Info;
-import com.pojo.ResponseBean;
+import com.pojo.*;
 import com.service.*;
 import com.util.MyUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletResponse;
 import java.util.Collections;
 import java.util.List;
 
@@ -35,79 +33,65 @@ public class IndexController {
     private StoreInfoService storeInfoService;
 
     @GetMapping("/carousel")
-    public String getCarouselList() throws Exception{
+    public ResponseBean getCarouselList() {
         List<Carousel> carousels = carouselService.queryAllCarousel();
-        return MyUtils.mapper.writeValueAsString(new ResponseBean(carousels).OK());
+        return new ResponseBean(carousels).OK();
     }
 
     @GetMapping("/introduction/index")
-    public String getBfIntro() throws Exception{
+    public ResponseBean getBfIntro() {
         List<BfIntro> bfIntros = bfIntroService.queryAllBfIntro();
-        return MyUtils.mapper.writeValueAsString(new ResponseBean(bfIntros).OK());
+        return new ResponseBean(bfIntros).OK();
     }
 
     @GetMapping("/information/all")
-    public String getAllInfo() throws Exception {
+    public ResponseBean getAllInfo() {
         List<Info> info = infoService.queryAllInfo();
         Collections.reverse(info);
-        return MyUtils.mapper.writeValueAsString(new ResponseBean(info).OK());
+        return new ResponseBean(info).OK();
     }
 
     @GetMapping("/information/index")
-    public String getIndexInfoList() throws Exception{
+    public ResponseBean getIndexInfoList() {
         List<Info> info = infoService.queryAllInfo();
         Collections.reverse(info);
-        return MyUtils.mapper.writeValueAsString(new ResponseBean(info.subList(0,4)).OK());
+        return new ResponseBean(info.subList(0, 4)).OK();
     }
 
     @GetMapping("/information/{id}")
-    public String getInfoByID(@PathVariable int id) throws Exception{
-        return MyUtils.mapper.writeValueAsString(new ResponseBean(infoService.queryInfoByID(id)).OK());
+    public ResponseBean getInfoByID(@PathVariable int id) {
+        return new ResponseBean(infoService.queryInfoByID(id)).OK();
     }
 
     @GetMapping("/product/list")
-    public String getProductList() throws Exception {
-        return MyUtils.mapper.writeValueAsString(
-                new ResponseBean(
-                        productService.queryProductList()
-                ).OK()
-        );
+    public ResponseBean getProductList() {
+        return new ResponseBean(productService.queryProductList()).OK();
     }
 
     @GetMapping("/product/{id}")
-    public String getProduct(@PathVariable int id) throws Exception{
-        return MyUtils.mapper.writeValueAsString(
-                new ResponseBean(
-                        productService.queryProductByID(id)
-                ).OK()
-        );
+    public ResponseBean getProduct(@PathVariable int id) {
+        return new ResponseBean(productService.queryProductByID(id)).OK();
     }
 
     @GetMapping("/product/carousel/{id}")
-    public String getProductCarousel(@PathVariable int id) throws Exception {
-        return MyUtils.mapper.writeValueAsString(
-                new ResponseBean(
-                        productService.queryProductImgByID(id)
-                ).OK()
-        );
+    public ResponseBean getProductCarousel(@PathVariable int id) {
+        return new ResponseBean(productService.queryProductImgByID(id)).OK();
     }
 
     @GetMapping("/product/selection/{id}")
-    public String getProductSelection(@PathVariable int id) throws Exception{
-        return MyUtils.mapper.writeValueAsString(
-                new ResponseBean(
-                        productService.queryProductSelectionByID(id)
-                ).OK()
-        );
+    public ResponseBean getProductSelection(@PathVariable int id) {
+        return new ResponseBean(productService.queryProductSelectionByID(id)).OK();
     }
 
     @GetMapping("/information/store")
-    public String getStoreInformation() throws Exception{
-        return MyUtils.mapper.writeValueAsString(
-                new ResponseBean(
-                        storeInfoService.queryStoreInfo()
-                ).OK()
-        );
+    public ResponseBean getStoreInformation() {
+        return new ResponseBean(storeInfoService.queryStoreInfo()).OK();
+    }
+
+    @PostMapping("/order/submit")
+    public ResponseBean handleOrderForm(@RequestBody List<OrderFormBean> form, HttpServletResponse httpServletResponse) {
+        System.out.println(form.toString());
+        return new ResponseBean().OK();
     }
 
 }

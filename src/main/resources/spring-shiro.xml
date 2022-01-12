@@ -20,6 +20,8 @@
                 / = anon
                 /dest = jwtFilter[Admin]
                 /xxxx = jwtFilter[User]
+                /order/submit = jwtFilter[Admin]
+                /api/open/order/submit = jwtFilter[Admin]
             </value>
         </property>
     </bean>
