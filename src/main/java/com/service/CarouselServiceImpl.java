@@ -5,6 +5,7 @@ import com.pojo.Carousel;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
+import java.util.Map;
 
 public class CarouselServiceImpl implements CarouselService{
 
@@ -23,5 +24,25 @@ public class CarouselServiceImpl implements CarouselService{
     @Override
     public Carousel queryCarouselByID(int id) {
         return carouselMapper.queryCarouselByID(id);
+    }
+
+    @Override
+    public List<Map> queryAllCarsouelForManage() {
+        return carouselMapper.queryAllCarsouelForManage();
+    }
+
+    @Override
+    public int updateCarousel(Carousel carousel) {
+        return carouselMapper.updateCarousel(carousel);
+    }
+
+    @Override
+    public int deleteCarouselByID(int id) {
+        return carouselMapper.deleteCarouselByID(id);
+    }
+
+    @Override
+    public int insertNewCarousel(Carousel carousel) {
+        return carouselMapper.insertNewCarousel(carousel);
     }
 }

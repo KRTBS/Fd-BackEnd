@@ -1,41 +1,43 @@
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.pojo.Product;
 import com.pojo.ResponseBean;
+import com.service.CarouselService;
 import com.service.ProductService;
 import com.util.JwtUtils;
 import com.util.MyUtils;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import javax.annotation.Resource;
 import java.util.HashMap;
 import java.util.Map;
 
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations = "classpath:applicationContext.xml")
 public class MyTest {
 
-    @Autowired
-    private ProductService productService;
+    @Resource
+    private CarouselService carouselService;
+
+    public CarouselService getCarouselService() {
+        return carouselService;
+    }
+
+    public void setCarouselService(CarouselService carouselService) {
+        this.carouselService = carouselService;
+    }
 
     @Test
     public void test() throws Exception{
-        //String s = JwtUtils.getToken("d1", "Admin");
-        //System.out.println("TOKEN");
-        //System.out.println(s);
-        //System.out.println(JwtUtils.verifyToken(s));
-        //System.out.println(JwtUtils.getTokenInfo(s));//JWTDecoder对象
-        //System.out.println(JwtUtils.getUsername("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiQWRtaW4iLCJleHAiOjE2Mzg1ODY0NTAsInVzZXJuYW1lIjoicm9vdCJ9.TipAEz6iWWDSOpaHDeJIyB9bpnQNDlvQQOMw0KajZ1A"));
-        //System.out.println(JwtUtils.getRole(s));
-        //System.out.println(JwtUtils.isExprire(s));
-
-
-
-        //System.out.println(new ResponseBean("sss").CREATED());
-
-
-
-        //System.out.println(MyUtils.mapper.writeValueAsString(new ResponseBean(productService.queryProductList()).OK()));
-
+        System.out.println(
+                carouselService.deleteCarouselByID(5)
+        );
     }
 
 }

@@ -1,6 +1,7 @@
 package com.controller;
 
 import com.pojo.ResponseBean;
+import com.service.CarouselService;
 import com.service.ProductService;
 import com.util.MyUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,9 +19,13 @@ public class TestController {
     @Autowired
     private ProductService productService;
 
+    @Autowired
+    private CarouselService carouselService;
+
     @RequestMapping("/test")
     public ResponseBean Test(){
-        return new ResponseBean(productService.queryProductList()).OK();
+        //return new ResponseBean(productService.queryProductList()).OK();
+        return new ResponseBean(carouselService.queryAllCarsouelForManage()).OK();
     }
 
     @RequestMapping("/dest")

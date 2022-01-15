@@ -18,12 +18,6 @@ import java.util.List;
 public class IndexController {
 
     @Autowired
-    private CarouselService carouselService;
-
-    @Autowired
-    private BfIntroService bfIntroService;
-
-    @Autowired
     private InfoService infoService;
 
     @Autowired
@@ -31,18 +25,6 @@ public class IndexController {
 
     @Autowired
     private StoreInfoService storeInfoService;
-
-    @GetMapping("/carousel")
-    public ResponseBean getCarouselList() {
-        List<Carousel> carousels = carouselService.queryAllCarousel();
-        return new ResponseBean(carousels).OK();
-    }
-
-    @GetMapping("/introduction/index")
-    public ResponseBean getBfIntro() {
-        List<BfIntro> bfIntros = bfIntroService.queryAllBfIntro();
-        return new ResponseBean(bfIntros).OK();
-    }
 
     @GetMapping("/information/all")
     public ResponseBean getAllInfo() {

@@ -5,11 +5,38 @@
 <mapper namespace="com.dao.CarouselMapper">
 
     <select id="queryAllCarousel" resultType="Carousel">
-        select * from fooddelivered.carousel;
+        select *
+        from fooddelivered.carousel;
     </select>
 
     <select id="queryCarouselByID" parameterType="int" resultType="Carousel">
-        select * from fooddelivered.carousel where id = #{id};
+        select *
+        from fooddelivered.carousel
+        where id = #{id};
     </select>
+
+    <select id="queryAllCarsouelForManage" resultType="map">
+        select carousel.id, carousel.title, carousel.imgsrc, carousel.itemid, product.name
+        from fooddelivered.carousel
+                 left join fooddelivered.product on carousel.itemid = product.id;
+    </select>
+
+    <update id="updateCarousel" parameterType="Carousel">
+        update fooddelivered.carousel
+        set carousel.title  = #{title},
+            carousel.imgsrc = #{imgsrc},
+            carousel.itemid = #{itemid}
+        where id = #{id};
+    </update>
+
+    <delete id="deleteCarouselByID" parameterType="int">
+        delete from fooddelivered.carousel
+        where carousel.id = #{id};
+    </delete>
+
+    <insert id="insertNewCarousel" parameterType="Carousel">
+        insert into fooddelivered.carousel(title, imgsrc, itemid)
+        values (#{title}, #{imgsrc}, #{itemid});
+    </insert>
 
 </mapper>

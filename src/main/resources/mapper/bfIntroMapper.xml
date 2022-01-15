@@ -5,7 +5,16 @@
 <mapper namespace="com.dao.BfIntroMapper">
 
     <select id="queryAllBfIntro" resultType="BfIntro">
-        select * from fooddelivered.bfintro;
+        select *
+        from fooddelivered.bfintro;
     </select>
+
+    <update id="updateIntro" parameterType="BfIntro">
+        update fooddelivered.bfintro
+        set bfintro.imgsrc  = #{imgsrc},
+            bfintro.title   = #{title},
+            bfintro.content = #{content}
+        where bfintro.id = #{id};
+    </update>
 
 </mapper>

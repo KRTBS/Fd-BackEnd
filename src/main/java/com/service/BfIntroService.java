@@ -8,4 +8,6 @@ public interface BfIntroService {
 
     List<BfIntro> queryAllBfIntro();
 
+    int updateIntro(BfIntro intro);
+
 }

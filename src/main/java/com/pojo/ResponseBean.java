@@ -67,4 +67,10 @@ public class ResponseBean {
         this.msg = HttpStatus.NOT_FOUND.getReasonPhrase();
         return this;
     }
+
+    public ResponseBean BAD_REQUEST(){
+        this.code = HttpStatus.BAD_REQUEST.value();
+        this.msg = HttpStatus.BAD_REQUEST.getReasonPhrase();
+        return this;
+    }
 }

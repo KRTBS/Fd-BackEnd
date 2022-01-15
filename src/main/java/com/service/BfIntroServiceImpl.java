@@ -19,4 +19,9 @@ public class BfIntroServiceImpl implements BfIntroService{
     public List<BfIntro> queryAllBfIntro() {
         return bfIntroMapper.queryAllBfIntro();
     }
+
+    @Override
+    public int updateIntro(BfIntro intro) {
+        return bfIntroMapper.updateIntro(intro);
+    }
 }

@@ -37,8 +37,8 @@ public class AccountController {
     @ResponseBody
     public ResponseBean login(@RequestBody LoginUserBean loginUserBean, HttpServletResponse httpServletResponse){
         Users users = userService.queryUserByName(loginUserBean.getUsername());
-        if (users == null)
-            return new ResponseBean(HttpStatus.UNAUTHORIZED.value(), "UserName Not Exist",null);
+        //if (users == null)
+        //    return new ResponseBean(HttpStatus.UNAUTHORIZED.value(), "UserName Not Exist",null);
         if (users.getUserPassword().equals(loginUserBean.getPassword())){
             String TOKEN = JwtUtils.getToken(users.getUserName(),users.getUserRole());
             httpServletResponse.setHeader("Authorization",TOKEN);
