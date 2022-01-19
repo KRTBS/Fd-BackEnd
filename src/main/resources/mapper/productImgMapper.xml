@@ -5,7 +5,24 @@
 <mapper namespace="com.dao.ProductImgMapper">
 
     <select id="queryProductImgByID" parameterType="int" resultType="ProductImg">
-        select * from fooddelivered.product_img where itemid = #{itemid};
+        select *
+        from fooddelivered.product_img
+        where itemid = #{itemid};
     </select>
+
+    <insert id="addNewProductImg" parameterType="ProductImg">
+        insert into fooddelivered.product_img(imgsrc, itemid)
+        VALUES (#{imgsrc}, #{itemid});
+    </insert>
+
+    <delete id="deleteProductImgByID" parameterType="int">
+        delete
+        from fooddelivered.product_img
+        where id = #{id};
+    </delete>
+
+    <delete id="deleteProductImgByItemID" parameterType="int">
+        delete from fooddelivered.product_img where product_img.itemid = #{itemid};
+    </delete>
 
 </mapper>

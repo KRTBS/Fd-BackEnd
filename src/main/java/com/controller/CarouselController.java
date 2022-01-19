@@ -34,11 +34,13 @@ public class CarouselController {
 
     @PutMapping("/auth/carousel")
     public ResponseBean updateCarousel(@RequestBody Carousel carousel){
+
         if (carouselService.updateCarousel(carousel) != 0){
             return new ResponseBean().OK();
         }else {
             return new ResponseBean().BAD_REQUEST();
         }
+
     }
 
     @DeleteMapping("/auth/carousel/{id}")

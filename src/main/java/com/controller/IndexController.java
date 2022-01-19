@@ -21,9 +21,6 @@ public class IndexController {
     private InfoService infoService;
 
     @Autowired
-    private ProductService productService;
-
-    @Autowired
     private StoreInfoService storeInfoService;
 
     @GetMapping("/information/all")
@@ -43,26 +40,6 @@ public class IndexController {
     @GetMapping("/information/{id}")
     public ResponseBean getInfoByID(@PathVariable int id) {
         return new ResponseBean(infoService.queryInfoByID(id)).OK();
-    }
-
-    @GetMapping("/product/list")
-    public ResponseBean getProductList() {
-        return new ResponseBean(productService.queryProductList()).OK();
-    }
-
-    @GetMapping("/product/{id}")
-    public ResponseBean getProduct(@PathVariable int id) {
-        return new ResponseBean(productService.queryProductByID(id)).OK();
-    }
-
-    @GetMapping("/product/carousel/{id}")
-    public ResponseBean getProductCarousel(@PathVariable int id) {
-        return new ResponseBean(productService.queryProductImgByID(id)).OK();
-    }
-
-    @GetMapping("/product/selection/{id}")
-    public ResponseBean getProductSelection(@PathVariable int id) {
-        return new ResponseBean(productService.queryProductSelectionByID(id)).OK();
     }
 
     @GetMapping("/information/store")

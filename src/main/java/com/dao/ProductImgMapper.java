@@ -10,4 +10,10 @@ public interface ProductImgMapper {
 
     List<ProductImg> queryProductImgByID(int itemid);
 
+    int addNewProductImg(ProductImg img);
+
+    int deleteProductImgByID(int id);
+
+    int deleteProductImgByItemID(int itemid);
+
 }

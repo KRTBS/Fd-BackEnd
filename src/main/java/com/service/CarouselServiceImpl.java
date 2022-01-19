@@ -43,6 +43,7 @@ public class CarouselServiceImpl implements CarouselService{
 
     @Override
     public int insertNewCarousel(Carousel carousel) {
-        return carouselMapper.insertNewCarousel(carousel);
+        carouselMapper.insertNewCarousel(carousel);
+        return carousel.getId();
     }
 }

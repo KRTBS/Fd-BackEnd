@@ -5,7 +5,24 @@
 <mapper namespace="com.dao.ProductSelectionMapper">
 
     <select id="queryProductSelectionByID" resultType="ProductSelection" parameterType="int">
-        select * from fooddelivered.product_selection where itemid = #{itemid};
+        select *
+        from fooddelivered.product_selection
+        where itemid = #{itemid};
     </select>
+
+    <insert id="insertNewProductSelection">
+        insert into fooddelivered.product_selection(`select`, itemid)
+        VALUES (#{select}, #{itemid});
+    </insert>
+
+    <delete id="deleteProductSelectionByID" parameterType="int">
+        delete
+        from fooddelivered.product_selection
+        where product_selection.id = #{id};
+    </delete>
+
+    <delete id="deleteProductSelectionByItemID" parameterType="int">
+        delete from fooddelivered.product_selection where product_selection.itemid = #{itemid};
+    </delete>
 
 </mapper>

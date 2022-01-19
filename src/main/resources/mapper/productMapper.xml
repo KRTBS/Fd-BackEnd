@@ -5,11 +5,35 @@
 <mapper namespace="com.dao.ProductMapper">
 
     <select id="queryProductList" resultType="Product">
-        select id, name, imgsrc, price from fooddelivered.product;
+        select id, name, imgsrc, price
+        from fooddelivered.product;
     </select>
 
     <select id="queryProductByID" resultType="Product" parameterType="int">
-        select * from fooddelivered.product where id = #{id};
+        select *
+        from fooddelivered.product
+        where id = #{id};
     </select>
+
+    <update id="updataProduct" parameterType="Product">
+        update fooddelivered.product
+        set product.name      = #{name},
+            product.imgsrc    = #{imgsrc},
+            product.price     = #{price},
+            product.briefinfo = #{briefinfo},
+            product.fullinfo  = #{fullinfo}
+        where id = #{id};
+    </update>
+
+    <insert id="insertNewProduct" parameterType="Product" useGeneratedKeys="true" keyProperty="id">
+        insert into fooddelivered.product(name, imgsrc, price, briefinfo, fullinfo)
+        values (#{name}, #{imgsrc}, #{price}, #{briefinfo}, #{fullinfo});
+    </insert>
+
+    <delete id="deleteProductByID" parameterType="int">
+        delete
+        from fooddelivered.product
+        where product.id = #{id};
+    </delete>
 
 </mapper>

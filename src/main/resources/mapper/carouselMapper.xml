@@ -30,11 +30,12 @@
     </update>
 
     <delete id="deleteCarouselByID" parameterType="int">
-        delete from fooddelivered.carousel
+        delete
+        from fooddelivered.carousel
         where carousel.id = #{id};
     </delete>
 
-    <insert id="insertNewCarousel" parameterType="Carousel">
+    <insert id="insertNewCarousel" parameterType="Carousel" useGeneratedKeys="true" keyProperty="id">
         insert into fooddelivered.carousel(title, imgsrc, itemid)
         values (#{title}, #{imgsrc}, #{itemid});
     </insert>

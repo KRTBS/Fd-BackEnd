@@ -10,4 +10,10 @@ public interface ProductSelectionMapper {
 
     List<ProductSelection> queryProductSelectionByID(int itemid);
 
+    int insertNewProductSelection(ProductSelection selection);
+
+    int deleteProductSelectionByID(int id);
+
+    int deleteProductSelectionByItemID(int itemid);
+
 }
