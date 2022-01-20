@@ -8,4 +8,6 @@ public interface StoreInfoMapper {
 
     StoreInfo queryStoreInfo();
 
+    int updataStoreInfo(StoreInfo storeInfo);
+
 }

@@ -17,35 +17,9 @@ import java.util.List;
 @CrossOrigin
 public class IndexController {
 
-    @Autowired
-    private InfoService infoService;
 
-    @Autowired
-    private StoreInfoService storeInfoService;
 
-    @GetMapping("/information/all")
-    public ResponseBean getAllInfo() {
-        List<Info> info = infoService.queryAllInfo();
-        Collections.reverse(info);
-        return new ResponseBean(info).OK();
-    }
 
-    @GetMapping("/information/index")
-    public ResponseBean getIndexInfoList() {
-        List<Info> info = infoService.queryAllInfo();
-        Collections.reverse(info);
-        return new ResponseBean(info.subList(0, 4)).OK();
-    }
-
-    @GetMapping("/information/{id}")
-    public ResponseBean getInfoByID(@PathVariable int id) {
-        return new ResponseBean(infoService.queryInfoByID(id)).OK();
-    }
-
-    @GetMapping("/information/store")
-    public ResponseBean getStoreInformation() {
-        return new ResponseBean(storeInfoService.queryStoreInfo()).OK();
-    }
 
     @PostMapping("/order/submit")
     public ResponseBean handleOrderForm(@RequestBody List<OrderFormBean> form, HttpServletResponse httpServletResponse) {

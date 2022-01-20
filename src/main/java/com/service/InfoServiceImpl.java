@@ -24,4 +24,19 @@ public class InfoServiceImpl implements InfoService{
     public Info queryInfoByID(int id) {
         return infoMapper.queryInfoByID(id);
     }
+
+    @Override
+    public int addNewInfo(Info info) {
+        return infoMapper.addNewInfo(info);
+    }
+
+    @Override
+    public int updateInfo(Info info) {
+        return infoMapper.updateInfo(info);
+    }
+
+    @Override
+    public int deleteInfoByID(int id) {
+        return infoMapper.deleteInfoByID(id);
+    }
 }

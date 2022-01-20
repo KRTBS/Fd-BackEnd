@@ -36,4 +36,6 @@
         where product.id = #{id};
     </delete>
 
+
+
 </mapper>

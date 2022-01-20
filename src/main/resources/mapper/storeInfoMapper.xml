@@ -5,7 +5,22 @@
 <mapper namespace="com.dao.StoreInfoMapper">
 
     <select id="queryStoreInfo" resultType="StoreInfo">
-        select * from fooddelivered.storeinfo;
+        select *
+        from fooddelivered.storeinfo;
     </select>
+
+    <update id="updataStoreInfo" parameterType="StoreInfo">
+        update
+            fooddelivered.storeinfo
+        set storeinfo.imgsrc        = #{imgsrc},
+            storeinfo.briefinfo     = #{briefinfo},
+            storeinfo.address       = #{address},
+            storeinfo.telephone     = #{telephone},
+            storeinfo.businesshours = #{businesshours},
+            storeinfo.offdays       = #{offdays},
+            storeinfo.googlemapsrc  = #{googlemapsrc}
+        where id = #{id};
+
+    </update>
 
 </mapper>

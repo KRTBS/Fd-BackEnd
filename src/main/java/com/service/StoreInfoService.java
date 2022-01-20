@@ -8,4 +8,6 @@ public interface StoreInfoService {
 
     StoreInfo queryStoreInfo();
 
+    int updataStoreInfo(StoreInfo storeInfo);
+
 }

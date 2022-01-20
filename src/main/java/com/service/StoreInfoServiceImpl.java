@@ -17,4 +17,9 @@ public class StoreInfoServiceImpl implements StoreInfoService{
     public StoreInfo queryStoreInfo() {
         return storeInfoMapper.queryStoreInfo();
     }
+
+    @Override
+    public int updataStoreInfo(StoreInfo storeInfo) {
+        return storeInfoMapper.updataStoreInfo(storeInfo);
+    }
 }

@@ -10,4 +10,10 @@ public interface InfoService {
 
     Info queryInfoByID(int id);
 
+    int addNewInfo(Info info);
+
+    int updateInfo(Info info);
+
+    int deleteInfoByID(int id);
+
 }

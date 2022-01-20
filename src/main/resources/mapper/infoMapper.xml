@@ -5,11 +5,34 @@
 <mapper namespace="com.dao.InfoMapper">
 
     <select id="queryAllInfo" resultType="Info">
-        select * from fooddelivered.info;
+        select *
+        from fooddelivered.info;
     </select>
 
     <select id="queryInfoByID" resultType="Info" parameterType="int">
-        select * from fooddelivered.info where id = #{id};
+        select *
+        from fooddelivered.info
+        where id = #{id};
     </select>
+
+    <insert id="addNewInfo" parameterType="Info">
+        insert into fooddelivered.info(imgsrc, time, title, content)
+        VALUES (#{imgsrc}, #{time}, #{title}, #{content});
+    </insert>
+
+    <update id="updateInfo" parameterType="Info">
+        update fooddelivered.info
+        set info.imgsrc  = #{imgsrc},
+            info.title   = #{title},
+            info.time    = #{time},
+            info.content = #{content}
+        where id = #{id};
+    </update>
+
+    <delete id="deleteInfoByID" parameterType="int">
+        delete
+        from fooddelivered.info
+        where info.id = #{id};
+    </delete>
 
 </mapper>
