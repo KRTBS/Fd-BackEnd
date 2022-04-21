@@ -49,6 +49,9 @@ public class JwtFilter extends BasicHttpAuthenticationFilter {
                     return true;
                 }
                 if (Arrays.asList(rolesArray).contains(JwtUtils.getRole(this.getAuthzHeader(request)))){
+
+                    System.out.println(JwtUtils.getRole(this.getAuthzHeader(request)));
+
                     return true;
                 }else {
                     response401(request,response);

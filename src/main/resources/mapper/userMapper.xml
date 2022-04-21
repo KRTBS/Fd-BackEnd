@@ -5,15 +5,46 @@
 <mapper namespace="com.dao.UserMapper">
 
     <select id="queryAllUser" resultType="User">
-        select * from fooddelivered.user_list;
+        select *
+        from fooddelivered.user_list;
     </select>
 
     <select id="queryUserByName" parameterType="string" resultType="User">
-        select * from fooddelivered.user_list where UserName = #{name};
+        select *
+        from fooddelivered.user_list
+        where userName = #{name};
+    </select>
+
+    <select id="queryUserByID" parameterType="int" resultType="User">
+        select *
+        from fooddelivered.user_list
+        where userID = #{userID};
     </select>
 
     <select id="quertUserRoleByName" parameterType="string" resultType="User">
-        select * from fooddelivered.user_list where UserRole = #{name};
+        select *
+        from fooddelivered.user_list
+        where userRole = #{name};
     </select>
+
+    <update id="updataInfo" parameterType="User">
+        update fooddelivered.user_list
+        set user_list.userName        = #{userName},
+            user_list.userPhoneNumber = #{userPhoneNumber},
+            user_list.email           = #{email},
+            user_list.address         = #{address}
+        where user_list.userID = #{userID};
+    </update>
+
+    <update id="updataPwd" parameterType="User">
+        update fooddelivered.user_list
+        set user_list.userPassword = #{userPassword}
+        where user_list.userID = #{userID};
+    </update>
+
+    <insert id="userRegist" parameterType="User">
+        insert into fooddelivered.user_list(userName, userPassword, userPhoneNumber, userRole, address, email)
+        values (#{userName}, #{userPassword}, #{userPhoneNumber}, #{userRole}, #{address}, #{email});
+    </insert>
 
 </mapper>

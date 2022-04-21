@@ -13,28 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 @RestControllerAdvice
 public class ExceptionController {
 
-    //Exception e, HttpServletRequest request, HttpServletResponse response
-
-    //@ResponseStatus(HttpStatus.UNAUTHORIZED)
-    //@ExceptionHandler(ShiroException.class)
-    //public ResponseBean handle401(ShiroException e){
-    //    return new ResponseBean(401,e.getMessage(),null);
-    //}
-
-    //@ResponseStatus(HttpStatus.UNAUTHORIZED)
-    //@ExceptionHandler(UnauthorizedException.class)
-    //public ResponseBean handle401(){
-    //    return new ResponseBean(401,"UNAUTHORIZED",null);
-    //}
-    //
-    //@ResponseStatus(HttpStatus.BAD_REQUEST)
-    //@ExceptionHandler(Exception.class)
-    //public ResponseBean globalException(HttpServletRequest request, Throwable throwable){
-    //    ResponseBean responseBean = new ResponseBean(getStatus(request).value(), throwable.getMessage(), null);
-    //    System.out.println("globalException");
-    //    return responseBean;
-    //}
-
     @ResponseStatus(HttpStatus.UNAUTHORIZED)
     @ExceptionHandler(ShiroException.class)
     public ResponseBean handle401(ShiroException e,HttpServletRequest request, HttpServletResponse response){
@@ -52,6 +30,7 @@ public class ExceptionController {
     public ResponseBean globalException(Exception e, HttpServletRequest request, HttpServletResponse response, Throwable throwable){
         ResponseBean responseBean = new ResponseBean(getStatus(request).value(), e.getMessage(), null);
         System.out.println("globalException");
+        System.out.println(e.getMessage());
         return responseBean;
     }
 

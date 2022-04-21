@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
-public class UserServiceImpl implements UserService{
+public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserMapper userMapper;
@@ -29,8 +29,30 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
+    public Users queryUserByID(int userID){
+        Users users = userMapper.queryUserByID(userID);
+        return users;
+    };
+
+    @Override
     public Users quertUserRoleByName(String name) {
         Users users = userMapper.quertUserRoleByName(name);
         return users;
+    }
+
+    @Override
+    public int updataInfo(Users users) {
+        return userMapper.updataInfo(users);
+    }
+
+    @Override
+    public int updataPwd(Users users) {
+        return userMapper.updataPwd(users);
+    }
+
+    @Override
+    public int userRegist(Users users) {
+        users.setUserRole("User");
+        return userMapper.userRegist(users);
     }
 }

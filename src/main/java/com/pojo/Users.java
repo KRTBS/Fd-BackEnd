@@ -1,82 +1,93 @@
 package com.pojo;
 
 public class Users {
-    private int UserID;
-    private String UserName;
-    private String UserPassword;
-    private int UserLocation;
-    private String UserPhoneNumber;
-    private String UserRole;
+    private int userID;
+    private String userName;
+    private String userPassword;
+    private String address;
+    private String userPhoneNumber;
+    private String userRole;
+    private String email;
 
     public Users() {
     }
 
-    public Users(int userID, String userName, String userPassword, int userLocation, String userPhoneNumber, String userRole) {
-        UserID = userID;
-        UserName = userName;
-        UserPassword = userPassword;
-        UserLocation = userLocation;
-        UserPhoneNumber = userPhoneNumber;
-        UserRole = userRole;
+    public Users(int userID, String userName, String userPassword, String address, String userPhoneNumber, String userRole, String email) {
+        this.userID = userID;
+        this.userName = userName;
+        this.userPassword = userPassword;
+        this.address = address;
+        this.userPhoneNumber = userPhoneNumber;
+        this.userRole = userRole;
+        this.email = email;
     }
 
     public int getUserID() {
-        return UserID;
+        return userID;
     }
 
     public void setUserID(int userID) {
-        UserID = userID;
+        this.userID = userID;
     }
 
     public String getUserName() {
-        return UserName;
+        return userName;
     }
 
     public void setUserName(String userName) {
-        UserName = userName;
+        this.userName = userName;
     }
 
     public String getUserPassword() {
-        return UserPassword;
+        return userPassword;
     }
 
     public void setUserPassword(String userPassword) {
-        UserPassword = userPassword;
+        this.userPassword = userPassword;
     }
 
-    public int getUserLocation() {
-        return UserLocation;
+    public String getAddress() {
+        return address;
     }
 
-    public void setUserLocation(int userLocation) {
-        UserLocation = userLocation;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public String getUserPhoneNumber() {
-        return UserPhoneNumber;
+        return userPhoneNumber;
     }
 
     public void setUserPhoneNumber(String userPhoneNumber) {
-        UserPhoneNumber = userPhoneNumber;
+        this.userPhoneNumber = userPhoneNumber;
     }
 
     public String getUserRole() {
-        return UserRole;
+        return userRole;
     }
 
     public void setUserRole(String userRole) {
-        UserRole = userRole;
+        this.userRole = userRole;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     @Override
     public String toString() {
-        return "User{" +
-                "UserID=" + UserID +
-                ", UserName='" + UserName + '\'' +
-                ", UserPassword='" + UserPassword + '\'' +
-                ", UserLocation=" + UserLocation +
-                ", UserPhoneNumber='" + UserPhoneNumber + '\'' +
-                ", UserRole='" + UserRole + '\'' +
+        return "Users{" +
+                "userID=" + userID +
+                ", userName='" + userName + '\'' +
+                ", userPassword='" + userPassword + '\'' +
+                ", address='" + address + '\'' +
+                ", userPhoneNumber='" + userPhoneNumber + '\'' +
+                ", userRole='" + userRole + '\'' +
+                ", email='" + email + '\'' +
                 '}';
     }
 }

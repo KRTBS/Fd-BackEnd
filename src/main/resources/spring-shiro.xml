@@ -18,10 +18,12 @@
         <property name="filterChainDefinitions">
             <value>
                 / = anon
-                <!--/dest = jwtFilter[Admin]-->
-                <!--/xxxx = jwtFilter[User]-->
-                <!--/order/submit = jwtFilter[Admin]-->
-                <!--/api/open/order/submit = jwtFilter[Admin]-->
+                /api/auth/userinfo = jwtFilter[User,Admin]
+                /api/auth/userinfo/pwd = jwtFilter[User,Admin]
+                /api/auth/myorder = jwtFilter[User,Admin]
+                /api/auth/order/submit = jwtFilter[User,Admin]
+                /api/auth/** = jwtFilter[Admin]
+                /api/open/** = anon
             </value>
         </property>
     </bean>

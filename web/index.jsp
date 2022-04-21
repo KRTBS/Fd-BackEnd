@@ -11,6 +11,9 @@
     <title>index</title>
   </head>
   <body>
-  <h1>There is nothing</h1>
+  <form action="imgUpLoad" method="post" enctype="multipart/form-data">
+    <input type="file" name="file">
+    <input type="submit" value="uploadFile">
+  </form>
   </body>
 </html>

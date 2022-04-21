@@ -37,7 +37,7 @@ public class FileController {
 
         fileService.addNewImgFile(imgFile);
 
-        return "ok";
+        return "http://localhost:8080/fileSave/" + fileName;
     }
 
     @RequestMapping("/api/v1/img/{imgName}")

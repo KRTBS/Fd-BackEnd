@@ -13,8 +13,12 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.util.ClassUtils;
+import org.springframework.web.bind.ServletRequestUtils;
+import org.springframework.web.servlet.support.RequestContextUtils;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -35,9 +39,7 @@ public class MyTest {
 
     @Test
     public void test() throws Exception{
-        System.out.println(
-                carouselService.deleteCarouselByID(5)
-        );
+        System.out.println(ClassUtils.getDefaultClassLoader().getResource("").getPath());
     }
 
 }

@@ -37,6 +37,10 @@
         <property name="storeInfoMapper" ref="storeInfoMapper"/>
     </bean>
 
+    <bean id="orderFormServiceImpl" class="com.service.OrderFormServiceImpl">
+        <property name="orderFormMapper" ref="orderFormMapper"/>
+    </bean>
+
 
     <!--声明式事务配置-->
     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
